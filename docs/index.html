@@ -60,11 +60,22 @@
     <br/>
     <div style="border: 2px solid rgb(209, 206, 206); border-radius: 15px; padding: 10px;width:1100px; margin:auto;box-shadow: 1px 1px 2px 6px rgb(209, 206, 206)">
     <div style="border: 2px solid white; border-radius: 15px; width:1000px; margin:auto;height: 200;">
-    <h2><p style="font-size:1.3em; font-family: 'Times New Roman';font-weight: normal;">Results</p></h2>
+    <h2><p style="font-size:1.3em; font-family: 'Times New Roman';font-weight: normal;">Visualization Results</p></h2>
     <img src="SOTA.png" alt="My Image" width="1000">
-    <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">The
-    </div>
-    </div>
+    <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">The above result image is a comparison of our method with other State-of-the-Art methods such as I2L-MeshNet, SPIN, and 3DCrowdNet. 
+        Only the 3DCrowdNet, which considers occlusion, and our method produced plausible results. In the first row, although 3DCrowdNet plausibly detects the mesh, it fails to properly extract the person at the very back. 
+        On the other hand, our method successfully extracts all three individuals plausibly. In the second row, when the person at the front performs a complex pose, 3DCrowdNet misses it, whereas our method detects it plausibly. 
+        In the last row, due to the complex pose, 3DCrowdNet fails to resolve the issue of the hand being projected forward, but our method shows a visually appealing result with all hands positioned behind the individuals.
+        <br/>
+        <br/>
+    <img src="complex_case.png" alt="My Image" width="1000">
+    <img src="Occlusion_case.png" alt="My Image" width="1000">
+    <img src="Occlusion+Complex_case.png" alt="My Image" width="1000">
+    <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">The above images show, from left to right, the input image, input 2D pose, 3DCrowdNet, and our method, respectively. 
+        All of these images are from the CrowdPose test set and demonstrate how our method is more robust in complex poses and occlusion compared to 3DCrowdNet. 
+        They demonstrate how well our method performs in challenging situations involving complex poses and occlusion.
+        <br/>
+        <br/>
     </div>
     </div>
 
