@@ -51,23 +51,26 @@
 			<ul>
 				<li><a href="#Abstract">Abstract</a></li>
 				<li><a href="#method">Method</a></li>
+				<li><a href="#adaptive">Adaptive Dilation</a></li>
 			</ul>
 		</li>
 		<li><a href="#">Benchmark Result</a>
 			<ul>
 				<li><a href="#3DPW Benchmark and Occlusion & Complex Pose Dataset Results">Paper Result</a></li>
+				<li><a href="#MuPoTs">MuPoTs</a></li>
 			</ul>
 		</li>
 		<li><a href="#">Visualization</a>
 			<ul>
-				<li><a href="#Visualization Results">Main Results</a></li>
-				<li><a href="#Other Visualization Results">CrowdPose Results</a></li>
+				<li><a href="#Visualization Results">Main Paper</a></li>
+				<li><a href="#Other Visualization Results">CrowdPose</a></li>
+				<li><a href="#Other Visualization Results_3DPW">3DPW</a></li>
 			</ul>
 		</li>
-		<li><a href="#">SESE</a>
+		<li><a href="#">SEE & SESD</a>
 			<ul>
-				<li><a href="#">Unable</a></li>
-				<li><a href="#">Unable</a></li>
+				<li><a href="#SEE">SEE</a></li>
+				<li><a href="#SESD">SESD</a></li>
 			</ul>
 		</li>
 	</ul>
@@ -184,9 +187,100 @@
         <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">The table above is Table 5 in the main paper, which consists of datasets for occlusion and complex poses. 
             The occlusion dataset includes 3DPW-OCC, 3DPW-PC, RH-Dataset (RH-D), OCHuman, and CrowdPose, while the complex pose dataset is LSP. The methods compared are all targeted towards occlusion, including OCHMR, Liu et al, VisDB, and 3DCrowdNet. 
             CLIFF was conducted to assess the difference in accuracy between our method and theirs in the presence of a domain gap. Our method shows overwhelmingly better performance compared to other methods. 
-            <br/><p id="Other Visualization Results"></p>
+            <br/><p id="MuPoTs"></p>
             <br/>
         </div>
+    </div>
+    <br/>
+    <div style="border: 2px solid rgb(209, 206, 206); border-radius: 15px; padding: 10px;width:1100px; margin:auto;box-shadow: 1px 1px 2px 6px rgb(209, 206, 206)">
+    
+        <br/>
+        <div style="border: 2px solid white; border-radius: 15px; width:1000px; margin:auto;height: 200;">
+    <h2><p style="font-size:1.3em; font-family: 'Times New Roman';font-weight: normal;">MuPoTs Dataset Results</p></h2>
+    <br/>
+    <center><img src="MuPoTs.png" alt="My Image" width="400"></center>
+    <br/>
+    <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">The table shows the results presented in the supplementary materials. 
+        While we used MuCo as the training dataset, the MuPoTs test set, which is a test set of MuCo, was shot externally rather than internally to create the largest possible domain gap with the training dataset. 
+        Therefore, the results on MuPoTs indicate the presence of a domain gap, and demonstrate that our method performs superiorly under such conditions.
+    <br/><p id="adaptive"></p>
+    <br/>
+    </div>
+    </div>
+    
+    <br/>
+    <div style="border: 2px solid rgb(209, 206, 206); border-radius: 15px; padding: 10px;width:1100px; margin:auto;box-shadow: 1px 1px 2px 6px rgb(209, 206, 206)">
+
+        <br/>
+        <div style="border: 2px solid white; border-radius: 15px; width:1000px; margin:auto;height: 200;">
+    <h2><p style="font-size:1.3em; font-family: 'Times New Roman';font-weight: normal;">Adaptive Dilation</p></h2>
+    <br/>
+    <center><img src="small_object.png" alt="My Image" width="1000"></center>
+    <br/>
+    <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">The image shows, from left to right, the input image, the mesh result for the pseudo ground truth in MSCOCO, the result of Canny Edge, the result of Canny Edge with dilation kernel 5, and the result of Canny Edge with dilation kernel 9. 
+        Starting from the result (c), we can observe that without dilation at a very small scale, we can infer the human form and pose. 
+        However, from a kernel size of 5 or more, we can observe that the structural information of the human is distorted. 
+        Therefore, we realized the need to adaptively adjust dilation from small to large scales, and solved this problem by adjusting the dilation kernel according to the area of the bounding box, as shown in the table below.
+        <br/>
+        <br/>
+        <center><img src="adaptive_dilation_table.png" alt="My Image" width="500"></center>
+        <br/>
+        <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">
+            The table above shows the dilation kernel size for different bounding box areas. 
+            We used a histogram to determine the criteria for adaptive dilation, and the results are shown in the figure below. 
+            The blue color represents the result obtained when the dilation kernel size is fixed to 5, and the red color represents the result obtained when adaptive dilation is applied.
+            Compared to the blue edge map, we can see that adaptive dilation better captures structural information for small-scale objects.
+            <br/>
+        <br/>
+        <center><img src="apdaptive_dilation.png" alt="My Image" width="500"></center>
+        
+        <center><img src="adaptive_dilationsupple.png" alt="My Image" width="500"></center>
+
+        <br/><p id="SEE"></p>
+        </div>
+    </div>
+    <br/>
+    <div style="border: 2px solid rgb(209, 206, 206); border-radius: 15px; padding: 10px;width:1100px; margin:auto;box-shadow: 1px 1px 2px 6px rgb(209, 206, 206)">
+    
+        <br/>
+        <div style="border: 2px solid white; border-radius: 15px; width:1000px; margin:auto;height: 200;">
+    <h2><p style="font-size:1.3em; font-family: 'Times New Roman';font-weight: normal;">SMPL Edge Estimator (SEE)</p></h2>
+    <br/>
+    <center><img src="SEE_backbone.png" alt="My Image" width="520"><img src="SEE_result.png" alt="My Image" width="480"></center>
+    <br/>
+    <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">The above image shows the visualization of the "SMPL Edge Estimator" module that directly estimates the SMPL Edge map without feature distillation. 
+        The motivation for conducting this experiment was to see if it is possible to create a module that can successfully generate the SMPL Edge map using a different backbone than feature distillation. 
+        For the implementation details of the simple SEE, a UNet model commonly used in segmentation was used, and the experiment was conducted using the H36M, MuCo, AGORA, MSCOCO pseudo GT, and MPII pseudo GT datasets. 
+        The loss function used was L1 Loss and VGG 16 Loss, and SSIM Loss, and the best results were obtained when using L1 * 0.4 + VGG 16 feature map * 1.6. The experiment was conducted for 80 epochs, and an RTX 3090 GPU was used. 
+        While the SEE experiment we conducted yielded reasonably good results, there was a critical issue as shown in the image below.
+        <br/>
+        <br/>
+        <center><img src="SEE_complex_Occlusion.png" alt="My Image" width="1000"></center>
+        <br/>
+        <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">The above figure shows the results of testing SEE's robustness in complex poses and occlusion situations. 
+            As shown in the results for easy-to-predict poses, it can be seen that the UNet backbone estimates the edges reasonably well, 
+            but in cases of occlusion, it fails to detect any edge, which is different from our expectations of detecting rough edges in occlusion situations. 
+            Furthermore, it can be observed that complex poses such as sitting are not properly detected. 
+            Therefore, we designed a more secure model and created the SMPL Edge Self-supervised De-occlusion (SESD) module. We will explain SESD in detail in the next section.
+    <br/><p id="SESD"></p>
+    <br/>
+    </div>
+    </div>
+    <br/>
+    <div style="border: 2px solid rgb(209, 206, 206); border-radius: 15px; padding: 10px;width:1100px; margin:auto;box-shadow: 1px 1px 2px 6px rgb(209, 206, 206)">
+    
+        <br/>
+        <div style="border: 2px solid white; border-radius: 15px; width:1000px; margin:auto;height: 200;">
+    <h2><p style="font-size:1.3em; font-family: 'Times New Roman';font-weight: normal;">SMPL Edge Self-supervised De-occlusion (SESD)</p></h2>
+    <br/>
+    <center><img src="SESD_backbone.png" alt="My Image" width="1000"></center>
+    <br/>
+    <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">The above image shows the visualization of the "SMPL Edge Estimator"
+        <br/>
+        <br/>
+    <br/><p id="Other Visualization Results"></p>
+    <br/>
+    </div>
     </div>
     <br/>
     <div style="border: 2px solid rgb(209, 206, 206); border-radius: 15px; padding: 10px;width:1100px; margin:auto;box-shadow: 1px 1px 2px 6px rgb(209, 206, 206)">
@@ -202,6 +296,25 @@
     <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">The above images show, from left to right, the input image, input 2D pose, 3DCrowdNet, and our method, respectively. 
         All of these images are from the CrowdPose test set and demonstrate how our method is more robust in complex poses and occlusion compared to 3DCrowdNet. 
         They demonstrate how well our method performs in challenging situations involving complex poses and occlusion.
+
+        <br/><p id="Other Visualization Results_3DPW"></p>
+        <br/>
+    </div>
+    </div>
+    <br/>
+    <div style="border: 2px solid rgb(209, 206, 206); border-radius: 15px; padding: 10px;width:1100px; margin:auto;box-shadow: 1px 1px 2px 6px rgb(209, 206, 206)">
+        <br/>
+    <div style="border: 2px solid white; border-radius: 15px; width:1000px; margin:auto;height: 200;">
+    <h2><p style="font-size:1.3em; font-family: 'Times New Roman';font-weight: normal;">Other Visualization Results</p></h2>
+    <br/>
+    <img src="supple_main5.png" alt="My Image" width="1000">
+    <br/>
+    <br/>
+    <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">The image results compare the 3D human modeling results on the 3DPW test set. 
+        The first row shows the input image, 2D pose, and SMPL model edges. The second row compares the GT Mesh (ground truth), Baseline Mesh, and SEFD's Mesh results. 
+        The third row shows a detailed comparison of the differences between the meshes.
+        These image results demonstrate that our method performs well on the 3DPW test set, and works better than 3DCrowdNet in more complex poses and occlusions. 
+        Therefore, these results show that our method performs well in the field of 3D human modeling and works well in various challenging situations.
 
         <br/>
         <br/>
