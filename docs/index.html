@@ -275,8 +275,15 @@
     <br/>
     <center><img src="SESD_backbone.png" alt="My Image" width="1000"></center>
     <br/>
-    <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">The above image shows the visualization of the "SMPL Edge Estimator"
+    <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">The above figure shows the SESD module, which was developed to address the limitations of the SEE model in detecting edges in complex poses and occlusion situations. 
+        The implementation details of SESD were similar to those of SEE, where UNet was used as the backbone for estimating the SMPL Edge map and Segmentation map from the input image. 
+        In the training stage, the SMPL Edge map and Segmentation map were estimated, and in the second stage, the estimated Segmentation map was multiplied with a random segmentation to erase the corresponding regions.
+         The resulting output segmentation was then multiplied with the input image, and this was fed into the first stage and a different UNet backbone to estimate the SMPL Edge map. 
+         The self-supervised learning approach was used to train the model, where the first stage's edge map was re-estimated using the obtained SMPL Edge map. 
+         During the testing stage, only the segmentation map was used from the first stage, and the input image was multiplied with it before being fed into the second stage's UNet model to estimate the SMPL Edge map. 
+         This idea was inspired by Zhan et al.'s paper, "Self-Supervised Scene De-occlusion." For any readers who may still be confused, I have created the following animated GIF to help illustrate.
         <br/>
+        <center><img src="SESD_expalin.gif" alt="My Image" width="1000"></center>
         <br/>
     <br/><p id="Other Visualization Results"></p>
     <br/>
