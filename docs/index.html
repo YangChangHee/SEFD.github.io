@@ -284,7 +284,17 @@
          This idea was inspired by Zhan et al.'s paper, "Self-Supervised Scene De-occlusion." For any readers who may still be confused, I have created the following animated GIF to help illustrate.
         <br/>
         <center><img src="SESD_expalin.gif" alt="My Image" width="1000"></center>
+
+        <center><img src="SESD_complex_OCclusion.png" alt="My Image" width="1000"></center>
         <br/>
+        <h3><p style="color:black;font-size:0.9em; font-family: 'Times New Roman';font-weight: normal;">The above figure visualizes the results of SESD. 
+            From the figure, we can see that not only occlusion but also the inability to estimate the SMPL edge map properly in complex poses. 
+            Although occlusion and complex pose have been improved and somewhat resolved through various studies in the field of human pose estimation, 
+            it is still difficult to obtain successful results in all cases. If we had solved this using a UNet model backbone, we would have achieved a significant improvement. 
+            However, this case shows that deep learning structures alone cannot solve occlusion, making it a good case to demonstrate and explain on our project page. 
+            Therefore, while it is undoubtedly important to develop modules targeting occlusion or complex poses, methods like ours in SESD that create more structurally accurate information closer to the ground truth in the feature map stage can also lead to better results. 
+            I hope that these methods will be more widely used in the future.
+            <br/>
     <br/><p id="Other Visualization Results"></p>
     <br/>
     </div>
